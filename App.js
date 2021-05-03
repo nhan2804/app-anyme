@@ -4,14 +4,28 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import { StyleSheet } from "react-native";
 import TabNav from "./Tab";
+import Splash from "./screens/Splash";
+import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+
+const queryClient = new QueryClient();
 export default function App() {
+  const [isLoading, setisLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setisLoading(false);
+    }, 200);
+  }, []);
+  if (isLoading) return <Splash />;
   return (
-    <NavigationContainer>
-      <TabNav></TabNav>
-    </NavigationContainer>
+    <QueryClientProvider client={queryClient}>
+      <NavigationContainer>
+        <TabNav></TabNav>
+      </NavigationContainer>
+    </QueryClientProvider>
   );
 }
 const styles = StyleSheet.create({
+  box: {},
   container: {
     flex: 1,
     backgroundColor: "#fff",

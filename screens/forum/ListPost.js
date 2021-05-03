@@ -3,31 +3,22 @@ import React, { useEffect, useState } from "react";
 import ListPost from "../../components/forum/listPost";
 import styles from "../../styles/forum";
 import { getPosts } from "../../api/forum";
-
+import useForum from "../../common/hooks/useForum";
+import ItemForum from "../../components/forum/ItemForum";
 function ListPosts({ navigation }) {
-  const [posts, setPosts] = useState([]);
-  const handleLoadAnime = () => {
-    getPosts().then((res) => {
-      setPosts(res.data.data.data);
-    });
-  };
+  const post = useForum();
   function onView(id) {
     navigation.navigate("ViewPost", { id });
   }
-  useEffect(handleLoadAnime, []);
-
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <View style={{ flex: 1 }}>
       <ScrollView>
-        <View style={styles.list}>
-          <Text>List Author</Text>
-          <ListPost onView={onView} posts={posts}></ListPost>
-        </View>
+        {post?.data?.data?.data?.data.map((e, i) => {
+          return <ItemForum onView={onView} item={e} key={e.id_post} />;
+        })}
       </ScrollView>
     </View>
   );
 }
-
-ListPosts.propTypes = {};
 
 export default ListPosts;

@@ -9,6 +9,7 @@ import {
   Image,
 } from "react-native";
 import styles from "../../styles/forum";
+import ItemForum from "./ItemForum";
 function ListPost(props) {
   const { posts } = props;
   const { onView } = props;
@@ -20,9 +21,9 @@ function ListPost(props) {
       {posts.map((e, i) => {
         return (
           <View style={styles.items} key={e.id_post} onPress>
-            <Text>{e.title_post}</Text>
-            <Button title="Xem" onPress={() => handleView(e.id_post)}></Button>
-            {/* <Image style={{width: 40, height: 40}} source={{uri:e.download_url}}></Image> */}
+            {/* <Text>{e.title_post}</Text>
+            <Button title="Xem" onPress={() => handleView(e.id_post)}></Button> */}
+            <ItemForum />
           </View>
         );
       })}
