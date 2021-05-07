@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-community/cli": "^5.0.1-alpha.2",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/bottom-tabs": "^5.11.7",
     "@react-navigation/native": "^5.9.2",
@@ -20,9 +21,11 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
+    "react-native-eject": "^0.1.2",
     "react-native-gesture-handler": "~1.8.0",
     "react-native-htmlview": "^0.16.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.3",
+    "react-native-modal": "^11.10.0",
     "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "3.1.9",
     "react-native-screens": "~2.15.0",
