@@ -8,7 +8,6 @@ import { MaterialCommunityIcons } from "react-native-vector-icons";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Course from "./screens/course/index";
 import User from "./screens/user/index";
-import Manga from "./screens/manga/Manga";
 const Tab = createBottomTabNavigator();
 function TabNav(props) {
   return (
@@ -87,7 +86,7 @@ function TabNav(props) {
           },
         }}
         name="User"
-        component={Manga}
+        component={User}
       />
     </Tab.Navigator>
   );
