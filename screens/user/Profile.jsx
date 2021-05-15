@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-import { Text } from "react-native";
-import { View } from "react-native";
-
-export default function Profile() {
-  return (
-    <View>
-      <Text>Hi</Text>
-    </View>
-=======
 import React, { useState } from "react";
 import { Animated, View, StyleSheet, Text, Image, ScrollView } from "react-native";
 import PropTypes from "prop-types";
@@ -187,7 +176,6 @@ function Profile(props) {
         </View>
       </View>
     </ScrollView>
->>>>>>> b10f8c94eee2d7c22b9d8bee339ce6ecbb12dcb4
   );
 }
 const styles = StyleSheet.create({
