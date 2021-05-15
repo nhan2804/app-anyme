@@ -10,26 +10,22 @@ import {
 
 import React from "react";
 import { Button } from "native-base";
+import config from "../../api/config";
 
-function Item(props) {
-  const tags = [
-    "PHP",
-    "JavaScript",
-    ".Net",
-    "Nodejs",
-    "ReactJS",
-    "Laravel",
-    "JavaSpring",
-  ];
+function Item({ course }) {
   const screenHeight = Dimensions.get("window").height;
   return (
     <View>
-      <ScrollView horizontal={true}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+        horizontal={true}
+      >
         <View style={styles.listCate}>
-          {[...Array(4)].map((e, i) => {
+          {course?.map((e, i) => {
             return (
               <View
-                key={Math.random()}
+                key={e.id_course}
                 style={[
                   styles.w_65,
                   { margin: 8 },
@@ -39,18 +35,17 @@ function Item(props) {
               >
                 <Image
                   source={{
-                    uri:
-                      "https://baokhuyennong.com/wp-content/uploads/2019/10/hinh-anh-hoa-cuc-hoa-mi-2.jpg",
+                    uri: config.resource + e.img_course,
                   }}
                   style={{
-                    height: 140,
+                    height: 180,
                     width: "100%",
-                    flex: 1,
+                    // flex: 1,
                   }}
                 ></Image>
                 <View>
                   <Text style={[{ fontSize: 20 }, styles.white]}>
-                    Lập trình căn bản
+                    {e.title_course}
                   </Text>
                   <Text style={styles.white}>Mới</Text>
                 </View>
@@ -80,7 +75,7 @@ const styles = StyleSheet.create({
     // flexWrap: "wrap",
   },
   w_65: {
-    width: "36%",
+    width: "280px",
   },
   rela: {
     position: "relative",

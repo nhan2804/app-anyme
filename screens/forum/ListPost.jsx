@@ -4,7 +4,7 @@ import styles from "../../styles/forum";
 import { getPosts } from "../../api/forum";
 import useForum from "../../common/hooks/useForum";
 import ItemForum from "../../components/forum/ItemForum";
-import NewPost from "./NewPost";
+// import NewPost from "./NewPost";
 function ListPosts({ navigation }) {
   const post = useForum();
   function onView(id) {
@@ -12,7 +12,7 @@ function ListPosts({ navigation }) {
   }
   return (
     <View style={{ flex: 1 }}>
-      <NewPost />
+      {/* <NewPost /> */}
       <ScrollView>
         {post?.data?.data?.data?.data.map((e, i) => {
           return <ItemForum onView={onView} item={e} key={e.id_post} />;
