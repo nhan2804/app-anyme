@@ -5,14 +5,16 @@ import {
   Text,
   Dimensions,
   ScrollView,
+  TouchableOpacity,
 } from "react-native";
 // import { ScrollView } from "react-native-gesture-handler";
 
 import React from "react";
 import { Button } from "native-base";
 import config from "../../api/config";
+// import { TouchableOpacity } from "react-native-gesture-handler";
 
-function Item({ course }) {
+function Item({ course, viewCourse }) {
   const screenHeight = Dimensions.get("window").height;
   return (
     <View>
@@ -24,32 +26,34 @@ function Item({ course }) {
         <View style={styles.listCate}>
           {course?.map((e, i) => {
             return (
-              <View
-                key={e.id_course}
-                style={[
-                  styles.w_65,
-                  { margin: 8 },
-                  { backgroundColor: "#5c5b5b" },
-                  { borderRadius: 8 },
-                ]}
-              >
-                <Image
-                  source={{
-                    uri: config.resource + e.img_course,
-                  }}
-                  style={{
-                    height: 180,
-                    width: "100%",
-                    // flex: 1,
-                  }}
-                ></Image>
-                <View>
-                  <Text style={[{ fontSize: 20 }, styles.white]}>
-                    {e.title_course}
-                  </Text>
-                  <Text style={styles.white}>Mới</Text>
+              <TouchableOpacity onPress={() => viewCourse(e.id_course)}>
+                <View
+                  key={e.id_course}
+                  style={[
+                    styles.w_65,
+                    { margin: 8 },
+                    { backgroundColor: "#5c5b5b" },
+                    { borderRadius: 8 },
+                  ]}
+                >
+                  <Image
+                    source={{
+                      uri: config.resource + e.img_course,
+                    }}
+                    style={{
+                      height: 180,
+                      width: "100%",
+                      // flex: 1,
+                    }}
+                  ></Image>
+                  <View>
+                    <Text style={[{ fontSize: 20 }, styles.white]}>
+                      {e.title_course}
+                    </Text>
+                    <Text style={styles.white}>Mới</Text>
+                  </View>
                 </View>
-              </View>
+              </TouchableOpacity>
             );
           })}
         </View>
@@ -88,7 +92,7 @@ const styles = StyleSheet.create({
   center: {
     left: "50%",
     top: "50%",
-    transform: "translate(-50%,-50%)",
+    transform: [{ translateX: "-50%" }, { translateY: "-50%" }],
     zIndex: 9,
     // textTransform: "uppercase",
     fontWeight: "bold",

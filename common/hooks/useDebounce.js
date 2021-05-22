@@ -18,6 +18,6 @@ export function useDebounce(value, delay) {
     },
     [value, delay] // Only re-call effect if value or delay changes
   );
-  console.log("1s sau m mới return thật à");
+
   return debouncedValue;
 }

@@ -1,0 +1,171 @@
+import { StyleSheet } from "react-native";
+const styles = StyleSheet.create({
+  container: {
+    width: "100%",
+    height: "100%",
+  },
+  header: {
+    width: "100%",
+    height: "200px",
+    backgroundColor: "black",
+  },
+  center: {
+    backgroundColor: "#242e37",
+    height: "380px",
+    alignItems: "center",
+    position: "relative",
+    //   justifyContent:"space-between"
+  },
+  inCenter: {
+    width: "90%",
+    margin: "15px",
+  },
+  title: {
+    color: "#fff",
+    fontSize: 25,
+  },
+  TouchableOpacity: {
+    backgroundColor: "#3f5664",
+    borderRadius: 50,
+    position: "relative",
+    width: "130px",
+    marginTop: 10,
+  },
+  img: {
+    width: "25px",
+    height: "25px",
+    borderRadius: 50,
+  },
+  tx: {
+    textAlign: "justify",
+    fontSize: 13,
+    color: "#ddd",
+    position: "absolute",
+    marginLeft: 30,
+    marginVertical: 2,
+  },
+  date: {
+    marginTop: 5,
+    textAlign: "justify",
+    color: "#ddd",
+    position: "relative",
+  },
+  Vbtn: {
+    marginTop: 10,
+    width: "100%",
+    height: "120px",
+    display: "flex",
+    alignItems: "center",
+  },
+  btnL: {
+    position: "absolute",
+    width: "30%",
+    paddingHorizontal: 20,
+    alignItems: "center",
+    marginRight: "70%",
+  },
+  btnC: {
+    position: "absolute",
+    width: "30%",
+    paddingHorizontal: 20,
+    alignItems: "center",
+  },
+  btnR: {
+    position: "absolute",
+    paddingHorizontal: 20,
+    width: "30%",
+    alignItems: "center",
+    marginLeft: "70%",
+  },
+  touch: {
+    width: "100%",
+    backgroundColor: "#3f5664",
+    height: "36px",
+    borderRadius: 7,
+    marginTop: "90px",
+  },
+  khhTx: {
+    marginVertical: 5,
+    textAlign: "center",
+    color: "#ddd",
+    fontSize: 15,
+  },
+  pick: {
+    height: 40,
+    width: "100%",
+    backgroundColor: "#3f5664",
+    color: "#ddd",
+    marginTop: 30,
+    borderRadius: 7,
+  },
+  Txb: {
+    color: "#ddd",
+    fontSize: 16,
+    marginTop: 10,
+  },
+  hoc: {
+    backgroundColor: "#3f5664",
+    borderRadius: 50,
+    width: "150px",
+    marginTop: 10,
+  },
+  hocTx: {
+    color: "#ddd",
+    marginVertical: 2,
+    marginHorizontal: 5,
+    fontSize: 13,
+  },
+  yc: {
+    fontSize: 16,
+    color: "#ddd",
+    marginTop: 5,
+  },
+  bot: {
+    backgroundColor: "#000",
+    height: "200px",
+    paddingLeft: "5%",
+    paddingRight: "5%",
+  },
+  btt: {
+    height: 32,
+    width: 80,
+    backgroundColor: "#3f5664",
+    borderRadius: 5,
+    marginTop: 10,
+  },
+  Txbtt: {
+    fontSize: 17,
+    fontWeight: "500",
+    color: "#ddd",
+    textAlign: "center",
+    marginVertical: 5,
+    marginRight: 8,
+  },
+  inBot: {
+    marginTop: 10,
+    height: 145,
+  },
+  item: {
+    width: "100%",
+    marginBottom: 10,
+  },
+  inL: {
+    width: 80,
+    height: 50,
+    borderRadius: 5,
+    backgroundColor: "#3f5664",
+  },
+  inC: {
+    color: "#ddd",
+    fontSize: 17,
+    position: "absolute",
+    marginLeft: 100,
+  },
+  inR: {
+    position: "absolute",
+    width: "100%",
+    alignItems: "flex-end",
+    paddingTop: 20,
+  },
+});
+export default styles;

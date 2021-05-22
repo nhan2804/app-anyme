@@ -19,7 +19,7 @@ import config from "../../api/config";
 
 function ItemBlog(props) {
   const { name, title_blog, img_blog, created_at } = props.item;
-  console.log("item thu" + name);
+
   return (
     <Content>
       <Card style={{ padding: 1 }}>

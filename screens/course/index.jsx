@@ -1,9 +1,9 @@
 import { View } from "native-base";
 import React from "react";
 import { ScrollView } from "react-native";
-import ItemCourse from "./ItemCourse";
+import ItemCourse from "./Course";
 
-function Course(props) {
+function sCourse(props) {
   return (
     <View style={{ flex: 1 }}>
       <ScrollView
@@ -16,4 +16,4 @@ function Course(props) {
   );
 }
 
-export default Course;
+export default sCourse;

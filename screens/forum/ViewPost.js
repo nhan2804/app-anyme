@@ -5,10 +5,13 @@ import { WebView } from "react-native-webview";
 import { viewPost } from "../../api/forum";
 import ItemForum from "../../components/forum/ItemForum";
 import Comment from "./Comment";
+import useInfo from "../../common/hooks/useInfo";
+import User from "../../components/user";
 
 function ViewPost({ route, navigation }) {
   const { id } = route.params;
-
+  const { data: info } = useInfo();
+  console.log(info);
   const [post, setPost] = useState({});
   const [cmts, setCmts] = useState([]);
   const handleView = () => {
@@ -17,18 +20,15 @@ function ViewPost({ route, navigation }) {
       setCmts(res.data.allcmt.data);
     });
   };
-  console.log(cmts?.[0]);
-  function onView(id) {
-    navigation.navigate("ViewPost", { id });
-  }
   useEffect(handleView, []);
 
   return (
     <View style={{ flex: 1 }}>
       <ScrollView>
         <ItemForum item={post} />
-        <WebView source={{ html: "<h1>App của tôi này !! </h1>" }} />
-
+        <View>
+          <User post={post} cmt={info}></User>
+        </View>
         <View>
           {cmts.map((e, i) => {
             return <Comment key={e.id_cmt} item={e} />;

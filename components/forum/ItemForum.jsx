@@ -10,11 +10,11 @@ import {
   Thumbnail,
   Text,
   Button,
-  Icon,
   Left,
   Body,
 } from "native-base";
 import config from "../../api/config";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 function ItemForum({ item, onView }) {
   const handleView = (id) => {
     onView(id);
@@ -38,13 +38,13 @@ function ItemForum({ item, onView }) {
       <CardItem>
         <Body>
           <Text>{item.title_post}</Text>
-          <Image
+          {/* <Image
             source={{
               uri:
                 "https://c4.wallpaperflare.com/wallpaper/432/692/1019/anime-my-teen-romantic-comedy-snafu-yukino-yukinoshita-wallpaper-preview.jpg",
             }}
             style={{ height: 200, width: 200, flex: 1 }}
-          />
+          /> */}
           <Text>{item.content_post}</Text>
         </Body>
       </CardItem>
@@ -52,7 +52,7 @@ function ItemForum({ item, onView }) {
         <Left>
           <Button transparent textStyle={{ color: "#87838B" }}>
             <Icon name="heart" />
-            <Text>{item.react} Yêu thích</Text>
+            <Text>{item.like_post} Yêu thích</Text>
           </Button>
           <Button
             onPress={() => handleView(item.id_post)}
@@ -60,7 +60,7 @@ function ItemForum({ item, onView }) {
             textStyle={{ color: "#87838B" }}
           >
             <Icon name="comment" />
-            <Text>{item.cmt} Bình luận</Text>
+            <Text>{item.comments} Bình luận</Text>
           </Button>
           <Button transparent textStyle={{ color: "#87838B" }}>
             <Icon name="eye" />

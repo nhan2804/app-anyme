@@ -4,23 +4,58 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import { StyleSheet } from "react-native";
 import TabNav from "./Tab";
-import Splash from "./screens/Splash";
+import Login from "./screens/login/Login";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import useCheckLogin from "./common/hooks/useCheckLogin";
+import api from "./api";
+import config from "./api/config";
+import Splash from "./screens/Splash";
+import Video from "./screens/course/Video";
 
 const queryClient = new QueryClient();
 export default function App() {
+  const [auth, setauth] = useState(false);
   const [isLoading, setisLoading] = useState(true);
+  const getData = async () => {
+    try {
+      const value = await AsyncStorage.getItem("auth");
+      if (value !== null) {
+        setauth(true);
+      } else {
+        console.log("k co auth");
+      }
+    } catch (e) {
+      // error reading value
+    }
+  };
   useEffect(() => {
-    setTimeout(() => {
-      setisLoading(false);
-    }, 200);
+    api
+      .get(config.api + "signin")
+      .then((res) => {
+        console.log("suceess");
+        getData();
+        setisLoading(false);
+      })
+      .catch((e) => {
+        console.log("no");
+        AsyncStorage.removeItem("auth");
+        setauth(false);
+        setisLoading(false);
+      });
   }, []);
+
   if (isLoading) return <Splash />;
+
   return (
     <QueryClientProvider client={queryClient}>
-      <NavigationContainer>
-        <TabNav></TabNav>
-      </NavigationContainer>
+      {!auth && <Login setauth={setauth}></Login>}
+      {/* <Video></Video> */}
+      {auth && (
+        <NavigationContainer>
+          <TabNav></TabNav>
+        </NavigationContainer>
+      )}
     </QueryClientProvider>
   );
 }

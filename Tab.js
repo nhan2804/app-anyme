@@ -6,8 +6,8 @@ import Forum from "./screens/forum/index";
 import Blog from "./screens/blog/index";
 import { MaterialCommunityIcons } from "react-native-vector-icons";
 import Icon from "react-native-vector-icons/FontAwesome";
-import Course from "./screens/course/index";
 import User from "./screens/user/index";
+import RootCourse from "./screens/course/RootCourse";
 const Tab = createBottomTabNavigator();
 function TabNav(props) {
   return (
@@ -54,7 +54,7 @@ function TabNav(props) {
           },
         }}
         name="Khóa học"
-        component={Course}
+        component={RootCourse}
       />
       <Tab.Screen
         options={{
@@ -70,7 +70,7 @@ function TabNav(props) {
           },
         }}
         name="Tài liệu"
-        component={Course}
+        component={RootCourse}
       />
       <Tab.Screen
         options={{
