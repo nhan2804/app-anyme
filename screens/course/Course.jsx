@@ -21,15 +21,13 @@ function Course(props) {
 
   const textSearch = useDebounce(search, 1000);
   const { data: data } = useCateCourse(textSearch);
-  useEffect(() => {
-    console.log("Tìm kiếm cho " + search);
-  }, [textSearch]);
-  const screenHeight = Dimensions.get("window").height;
   const viewCourse = (id) => {
-    console.log("view " + id);
     props.navigation.navigate("DetailCourse", {
       id,
     });
+  };
+  const onSuggest = () => {
+    props.navigation.navigate("SuggestCourse");
   };
   return (
     <Container>
@@ -45,7 +43,9 @@ function Course(props) {
       >
         <View>
           {!!search.length && <Text>Tìm kiếm cho : {search}</Text>}
-          {search.length == 0 && <CateCourse cate={data?.cate} />}
+          {search.length == 0 && (
+            <CateCourse onSuggest={onSuggest} cate={data?.cate} />
+          )}
           {data?.courses &&
             Object.keys(data?.courses).map((e, i) => {
               return (
@@ -69,7 +69,6 @@ const styles = StyleSheet.create({
   tags: {
     borderRadius: 18,
     margin: 8,
-    height: "unset",
   },
   listCate: {
     display: "flex",
@@ -86,16 +85,6 @@ const styles = StyleSheet.create({
   },
   abs: {
     position: "absolute",
-  },
-  center: {
-    left: "50%",
-    top: "50%",
-    transform: [{ translateX: "-50%" }, { translateY: "-50%" }],
-    zIndex: 9,
-    // textTransform: "uppercase",
-    fontWeight: "bold",
-    // color: "#fff",
-    fontSize: 16,
   },
 });
 // export  styles;

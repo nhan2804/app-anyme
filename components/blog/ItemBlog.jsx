@@ -40,20 +40,10 @@ function ItemBlog(props) {
           />
         </CardItem>
         <CardItem>
-          <Left>
-            <Button transparent>
-              <Icon active name="thumbs-up" />
-              <Text>12 Thích</Text>
-            </Button>
-          </Left>
-          <Body>
-            <Button transparent>
-              <Icon active name="chatbubbles" />
-              <Text>4 Cmt</Text>
-            </Button>
-          </Body>
+          <Left></Left>
+          <Body></Body>
           <Right>
-            <Text>11h ago</Text>
+            <Text>{created_at}</Text>
           </Right>
         </CardItem>
       </Card>

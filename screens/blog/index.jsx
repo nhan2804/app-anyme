@@ -5,7 +5,7 @@ import ItemBlog from "../../components/blog/ItemBlog";
 import { Container, Header, Left, Body, Right, Title } from "native-base";
 function Blog(props) {
   const data = useBlogs();
-  console.log(data?.data?.data?.datas);
+
   return (
     <Container>
       <Header>
@@ -15,7 +15,7 @@ function Blog(props) {
         </Body>
         <Right />
       </Header>
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <View>
         <ScrollView>
           {/* <FlatList
           keyExtractor={(item) => item.id_blog.toString()}

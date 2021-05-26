@@ -15,6 +15,7 @@ import {
 } from "native-base";
 import config from "../../api/config";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import WebView from "react-native-webview";
 function ItemForum({ item, onView }) {
   const handleView = (id) => {
     onView(id);
@@ -25,19 +26,19 @@ function ItemForum({ item, onView }) {
         <Left>
           <Thumbnail
             source={{
-              uri: `${config.base}${item.avatar}`,
+              uri: `${config.base}${item?.avatar}`,
             }}
           />
           <Body>
-            <Text>{item.displayname}</Text>
-            <Text note>{item.created_at}</Text>
+            <Text>{item?.displayname}</Text>
+            <Text note>{item?.created_at}</Text>
           </Body>
         </Left>
       </CardItem>
 
       <CardItem>
         <Body>
-          <Text>{item.title_post}</Text>
+          <Text>{item?.title_post}</Text>
           {/* <Image
             source={{
               uri:
@@ -45,14 +46,15 @@ function ItemForum({ item, onView }) {
             }}
             style={{ height: 200, width: 200, flex: 1 }}
           /> */}
-          <Text>{item.content_post}</Text>
+          {/* <Text>{item?.content_post}</Text> */}
+          <WebView source={{ html: item?.content_post }} />
         </Body>
       </CardItem>
       <CardItem>
         <Left>
           <Button transparent textStyle={{ color: "#87838B" }}>
             <Icon name="heart" />
-            <Text>{item.like_post} Yêu thích</Text>
+            <Text>{item?.like_post} Yêu thích</Text>
           </Button>
           <Button
             onPress={() => handleView(item.id_post)}
@@ -60,11 +62,11 @@ function ItemForum({ item, onView }) {
             textStyle={{ color: "#87838B" }}
           >
             <Icon name="comment" />
-            <Text>{item.comments} Bình luận</Text>
+            <Text>{item?.comments} Bình luận</Text>
           </Button>
           <Button transparent textStyle={{ color: "#87838B" }}>
             <Icon name="eye" />
-            <Text>{item.views} View</Text>
+            <Text>{item?.views} View</Text>
           </Button>
         </Left>
       </CardItem>

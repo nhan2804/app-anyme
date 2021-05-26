@@ -12,6 +12,7 @@ import api from "./api";
 import config from "./api/config";
 import Splash from "./screens/Splash";
 import Video from "./screens/course/Video";
+import * as Font from "expo-font";
 
 const queryClient = new QueryClient();
 export default function App() {
@@ -29,6 +30,15 @@ export default function App() {
       // error reading value
     }
   };
+  useEffect(() => {
+    const LoadFont = async () => {
+      await Font.loadAsync({
+        Roboto: require("native-base/Fonts/Roboto.ttf"),
+        Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
+      });
+    };
+    LoadFont();
+  }, []);
   useEffect(() => {
     api
       .get(config.api + "signin")

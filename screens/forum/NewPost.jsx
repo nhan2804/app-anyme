@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, ToastAndroid } from "react-native";
 import { StyleSheet } from "react-native";
-import RNPickerSelect from "@react-native-picker/picker";
-import Icon from "react-native-vector-icons/FontAwesome";
 import { Input, Button } from "react-native-elements";
 import useLogin from "../../common/hooks/useLogin";
 import { useForm, Controller } from "react-hook-form";
@@ -31,7 +29,6 @@ const NewPost = ({ isOpen, navigation }) => {
   return (
     <View>
       <View style={styles.viewStyles}>
-        <Text style={styles.textStyles}>Yukino</Text>
         <Controller
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
@@ -46,6 +43,7 @@ const NewPost = ({ isOpen, navigation }) => {
           rules={{ required: true }}
           defaultValue=""
         />
+
         <Controller
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
@@ -75,7 +73,7 @@ const NewPost = ({ isOpen, navigation }) => {
 
 const styles = StyleSheet.create({
   viewStyles: {
-    flex: 1,
+    // flex: 1,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#fabc36",

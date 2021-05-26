@@ -1,9 +1,14 @@
 import axios from "axios";
-const BASE_URL = "http://localhost/codehero/api/";
-// const BASE_URL = "https://sohoceravietnam.com/api";
+import Constants from "expo-constants";
+const { manifest } = Constants;
+const uri = `http://${manifest.debuggerHost.split(":").shift()}/codehero/api`;
+console.log(">?");
+console.log(uri);
+console.log("<?");
+const BASE_URL = "https://192.168.1.7/codehero/api";
 // axios.defaults.withCredentials = true;
 const api = axios.create({
-  baseURL: BASE_URL,
+  baseURL: uri,
   withCredentials: true,
 });
 api.defaults.headers.Accept = "application/json";

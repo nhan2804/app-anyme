@@ -1,9 +1,14 @@
-import { View, StyleSheet, Image, Text, ScrollView } from "react-native";
-// import { ScrollView } from "react-native-gesture-handler";
-
-import React, { useState, useEffect, memo } from "react";
+import {
+  View,
+  StyleSheet,
+  Image,
+  Text,
+  ScrollView,
+  Animated,
+} from "react-native";
+import React, { useState } from "react";
 import { Button } from "native-base";
-export default memo(function CateCourse({ cate }) {
+export default function CateCourse({ cate, onSuggest }) {
   const tags = [
     "PHP",
     "JavaScript",
@@ -16,7 +21,7 @@ export default memo(function CateCourse({ cate }) {
   const [id, setid] = useState(1);
   return (
     <View>
-      <View style={[styles.rela]}>
+      <Animated.View style={[styles.rela]}>
         <Text style={[styles.abs, styles.center]}>Khóa mới</Text>
         <Image
           style={{
@@ -29,9 +34,11 @@ export default memo(function CateCourse({ cate }) {
             uri: "https://www.classcentral.com/report/wp-content/uploads/2020/06/top-100-course-pandemic.png",
           }}
         ></Image>
-      </View>
-      <View style={[styles.rela]}>
-        <Text style={[styles.abs, styles.center]}>Gợi ý cho bạn</Text>
+      </Animated.View>
+      <Animated.View style={[styles.rela]}>
+        <Text onPress={() => onSuggest()} style={[styles.abs, styles.center]}>
+          Gợi ý cho bạn
+        </Text>
         <Image
           style={{
             height: 150,
@@ -43,12 +50,12 @@ export default memo(function CateCourse({ cate }) {
             uri: "https://www.incimages.com/uploaded_files/image/1920x1080/getty_933383882_2000133420009280345_410292.jpg",
           }}
         ></Image>
-      </View>
+      </Animated.View>
       <Text style={{ fontSize: 20 }}>Phổ biến</Text>
       <View style={styles.listCate}>
         {cate?.map((e, i) => {
           return (
-            <View key={e.id_cate} style={[styles.rela, styles.w_50]}>
+            <Animated.View key={e.id_cate} style={[styles.rela, styles.w_50]}>
               <Text
                 onPress={() => setid(e.id_cate)}
                 style={[styles.abs, styles.center]}
@@ -69,7 +76,7 @@ export default memo(function CateCourse({ cate }) {
                   },
                 ]}
               ></Image>
-            </View>
+            </Animated.View>
           );
         })}
       </View>
@@ -87,12 +94,11 @@ export default memo(function CateCourse({ cate }) {
       </ScrollView>
     </View>
   );
-});
+}
 const styles = StyleSheet.create({
   tags: {
     borderRadius: 18,
     margin: 8,
-    height: "unset",
   },
   listCate: {
     display: "flex",
@@ -118,11 +124,11 @@ const styles = StyleSheet.create({
   center: {
     left: "50%",
     top: "50%",
-    transform: [{ translateX: "-50%" }, { translateY: "-50%" }],
+    transform: [{ translateX: -60 }, { translateY: -10 }],
     zIndex: 9,
     // textTransform: "uppercase",
     fontWeight: "bold",
     // color: "#fff",
-    fontSize: 16,
+    fontSize: 18,
   },
 });

@@ -26,7 +26,10 @@ function Item({ course, viewCourse }) {
         <View style={styles.listCate}>
           {course?.map((e, i) => {
             return (
-              <TouchableOpacity onPress={() => viewCourse(e.id_course)}>
+              <TouchableOpacity
+                style={styles.item}
+                onPress={() => viewCourse(e.id_course)}
+              >
                 <View
                   key={e.id_course}
                   style={[
@@ -46,9 +49,9 @@ function Item({ course, viewCourse }) {
                       // flex: 1,
                     }}
                   ></Image>
-                  <View>
+                  <View style={styles.item}>
                     <Text style={[{ fontSize: 20 }, styles.white]}>
-                      {e.title_course}
+                      {e.title_course.substring(0, 20) + "..."}
                     </Text>
                     <Text style={styles.white}>Mới</Text>
                   </View>
@@ -67,10 +70,8 @@ const styles = StyleSheet.create({
   white: {
     color: "#fff",
   },
-  tags: {
-    borderRadius: 18,
-    margin: 8,
-    height: "unset",
+  item: {
+    padding: 4,
   },
   listCate: {
     display: "flex",
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
     // flexWrap: "wrap",
   },
   w_65: {
-    width: "280px",
+    width: 280,
   },
   rela: {
     position: "relative",
@@ -88,16 +89,6 @@ const styles = StyleSheet.create({
   },
   abs: {
     position: "absolute",
-  },
-  center: {
-    left: "50%",
-    top: "50%",
-    transform: [{ translateX: "-50%" }, { translateY: "-50%" }],
-    zIndex: 9,
-    // textTransform: "uppercase",
-    fontWeight: "bold",
-    color: "#fff",
-    fontSize: 16,
   },
 });
 // export  styles;

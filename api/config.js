@@ -1,5 +1,11 @@
+import Constants from "expo-constants";
+const { manifest } = Constants;
+const resourse = `http://${manifest.debuggerHost
+  .split(":")
+  .shift()}/codehero/public`;
+const base = `http://${manifest.debuggerHost.split(":").shift()}/codehero/`;
 export default {
-  api: "http://localhost/codehero/api/",
-  resource: "http://localhost/codehero/public/",
-  base: "http://localhost/codehero/",
+  api: "",
+  resource: resourse,
+  base: base,
 };

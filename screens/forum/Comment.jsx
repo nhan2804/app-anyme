@@ -13,20 +13,30 @@ import {
   View,
 } from "native-base";
 import config from "../../api/config";
+import { WebView } from "react-native-webview";
 function Comment(props) {
   const cmt = props.item;
   return (
     <List>
       <ListItem avatar>
         <Left>
-          <Thumbnail source={{ uri: config.base + cmt.avatar }} />
+          <Thumbnail source={{ uri: config.base + cmt?.avatar }} />
         </Left>
         <Body>
-          <View style={{ paddingLeft: "40px" }}>
-            <Text>{cmt.displayname}</Text>
-            <Text note>{cmt.content_cmt}</Text>
+          <View style={{ paddingLeft: 40 }}>
+            <Text>{cmt?.displayname}</Text>
+            <View style={{ flex: 1 }}>
+              <Text>{cmt?.content_cmt}</Text>
+            </View>
           </View>
         </Body>
+        <View>
+          <WebView
+            source={{
+              html: cmt?.content_cmt,
+            }}
+          />
+        </View>
         <Right>
           <Text note>3:43 pm</Text>
         </Right>

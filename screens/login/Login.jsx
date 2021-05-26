@@ -26,7 +26,7 @@ export default function Login({ setauth }) {
   };
   const storeData = async () => {
     try {
-      await AsyncStorage.setItem("auth", true);
+      await AsyncStorage.setItem("auth", "true");
       setauth(true);
       console.log("save success");
     } catch (error) {
@@ -49,6 +49,8 @@ export default function Login({ setauth }) {
   };
   return (
     <View style={styles.viewStyles}>
+      <Text style={styles.textStyles}>Yukino</Text>
+      <Text style={styles.textStyles}>Yukino</Text>
       <Text style={styles.textStyles}>Yukino</Text>
       <Controller
         control={control}

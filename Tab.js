@@ -8,6 +8,7 @@ import { MaterialCommunityIcons } from "react-native-vector-icons";
 import Icon from "react-native-vector-icons/FontAwesome";
 import User from "./screens/user/index";
 import RootCourse from "./screens/course/RootCourse";
+import Document from "./screens/document";
 const Tab = createBottomTabNavigator();
 function TabNav(props) {
   return (
@@ -21,19 +22,27 @@ function TabNav(props) {
         component={Forum}
         options={{
           tabBarLabel: "Forum",
-          tabBarIcon: ({ tintColor }) => {
+          tabBarIcon: ({ tintColor, focused }) => {
             return (
-              <MaterialCommunityIcons name="home" color={tintColor} size={18} />
+              <MaterialCommunityIcons
+                name={focused ? "home" : "home-outline"}
+                color={"#007bff"}
+                size={20}
+              />
             );
           },
         }}
       />
       <Tab.Screen
         options={{
-          tabBarLabel: "Forum",
-          tabBarIcon: ({ tintColor }) => {
+          tabBarLabel: "Chia sẻ",
+          tabBarIcon: ({ tintColor, focused }) => {
             return (
-              <MaterialCommunityIcons name="book" color={tintColor} size={18} />
+              <MaterialCommunityIcons
+                name={focused ? "book" : "book-outline"}
+                color={"#007bff"}
+                size={20}
+              />
             );
           },
         }}
@@ -43,12 +52,12 @@ function TabNav(props) {
       <Tab.Screen
         options={{
           tabBarLabel: "Khóa học",
-          tabBarIcon: ({ tintColor }) => {
+          tabBarIcon: ({ tintColor, focused }) => {
             return (
               <MaterialCommunityIcons
-                name="console"
-                color={tintColor}
-                size={18}
+                name={focused ? "alpha-c-box" : "alpha-c-box-outline"}
+                color={"#007bff"}
+                size={20}
               />
             );
           },
@@ -59,28 +68,28 @@ function TabNav(props) {
       <Tab.Screen
         options={{
           tabBarLabel: "Tài liệu",
-          tabBarIcon: ({ tintColor }) => {
+          tabBarIcon: ({ tintColor, focused }) => {
             return (
               <MaterialCommunityIcons
-                name="file-document"
-                color={tintColor}
-                size={18}
+                name={focused ? "file-document" : "file-document-outline"}
+                color={"#007bff"}
+                size={20}
               />
             );
           },
         }}
-        name="Tài liệu"
-        component={RootCourse}
+        name="Document"
+        component={Document}
       />
       <Tab.Screen
         options={{
           tabBarLabel: "User",
-          tabBarIcon: ({ tintColor }) => {
+          tabBarIcon: ({ tintColor, focused }) => {
             return (
               <MaterialCommunityIcons
-                name="nature-people"
-                color={tintColor}
-                size={18}
+                name={focused ? "account-circle" : "account-circle-outline"}
+                color={"#007bff"}
+                size={20}
               />
             );
           },

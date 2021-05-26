@@ -34,14 +34,16 @@ export default function User({ cmt, post }) {
           <Thumbnail source={{ uri: config.base + cmt?.avatar }} />
         </Left>
         <Body>
-          <View style={{ paddingLeft: "40px" }}>
+          <View style={{ paddingLeft: 40 }}>
             <Text>{cmt?.displayname}</Text>
             <TextInput onChangeText={settext} value={text} />
           </View>
         </Body>
       </ListItem>
       <Right>
-        <Button onPress={handleCmt}>Bình luận</Button>
+        <Button onPress={handleCmt}>
+          <Text>Bình luận</Text>
+        </Button>
       </Right>
     </List>
   );

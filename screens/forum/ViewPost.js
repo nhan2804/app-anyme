@@ -1,36 +1,27 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { WebView } from "react-native-webview";
-import { viewPost } from "../../api/forum";
 import ItemForum from "../../components/forum/ItemForum";
 import Comment from "./Comment";
 import useInfo from "../../common/hooks/useInfo";
 import User from "../../components/user";
+import useDetailForum from "../../common/hooks/useDetailForum";
 
 function ViewPost({ route, navigation }) {
   const { id } = route.params;
   const { data: info } = useInfo();
-  console.log(info);
-  const [post, setPost] = useState({});
-  const [cmts, setCmts] = useState([]);
-  const handleView = () => {
-    viewPost(id).then((res) => {
-      setPost(res.data.datas);
-      setCmts(res.data.allcmt.data);
-    });
-  };
-  useEffect(handleView, []);
+
+  const { data: post } = useDetailForum(id);
 
   return (
     <View style={{ flex: 1 }}>
       <ScrollView>
-        <ItemForum item={post} />
+        <ItemForum item={post?.datas} />
         <View>
-          <User post={post} cmt={info}></User>
+          <User post={post?.datas} cmt={info}></User>
         </View>
         <View>
-          {cmts.map((e, i) => {
+          {post?.allcmt?.data?.map((e, i) => {
             return <Comment key={e.id_cmt} item={e} />;
           })}
         </View>
