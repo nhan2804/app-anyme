@@ -2,6 +2,7 @@ import { Text, Button, View, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
 import useForum from "../../common/hooks/useForum";
 import ItemForum from "../../components/forum/ItemForum";
+import { Header } from "react-native-elements";
 // import NewPost from "./NewPost";
 function ListPosts({ navigation }) {
   const post = useForum();
@@ -12,6 +13,10 @@ function ListPosts({ navigation }) {
 
   return (
     <View style={{ flex: 1 }}>
+      <Header
+        leftComponent={{ icon: "home", color: "#fff" }}
+        centerComponent={{ text: "Trang chủ", style: { color: "#fff" } }}
+      />
       <Button
         onPress={() => navigation.navigate("NewPost")}
         title="Bị bug à?"

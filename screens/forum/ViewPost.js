@@ -6,6 +6,7 @@ import Comment from "./Comment";
 import useInfo from "../../common/hooks/useInfo";
 import User from "../../components/user";
 import useDetailForum from "../../common/hooks/useDetailForum";
+import { Header } from "react-native-elements";
 
 function ViewPost({ route, navigation }) {
   const { id } = route.params;
@@ -16,6 +17,10 @@ function ViewPost({ route, navigation }) {
   return (
     <View style={{ flex: 1 }}>
       <ScrollView>
+        <Header
+          leftComponent={{ icon: "home", color: "#fff" }}
+          centerComponent={{ text: "Chi tiết", style: { color: "#fff" } }}
+        />
         <ItemForum isDetail={true} item={post?.datas} />
         <View>
           <User post={post?.datas} cmt={info}></User>

@@ -7,7 +7,9 @@ import NewPost from "./NewPost";
 function Forum() {
   const Stack = createStackNavigator();
   return (
-    <Stack.Navigator screenOptions={{ animationEnabled: false }}>
+    <Stack.Navigator
+      screenOptions={{ animationEnabled: false, headerShown: false }}
+    >
       <Stack.Screen
         name="ListPost"
         component={ListPosts}

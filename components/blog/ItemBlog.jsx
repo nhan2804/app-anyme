@@ -22,6 +22,7 @@ function ItemBlog(props) {
     id_blog,
     avatar,
     displayname,
+    color_cate,
   } = props.item;
   console.log("item id" + id_blog);
   console.log(title_blog);
@@ -32,7 +33,12 @@ function ItemBlog(props) {
           <Left>
             <Thumbnail source={{ uri: `${config.base}${avatar}` }} />
             <Body>
-              <Text>{displayname}</Text>
+              <Text>
+                {displayname}{" "}
+                <Text style={{ backgroundColor: color_cate, borderRadius: 4 }}>
+                  {name}
+                </Text>
+              </Text>
               <Text note>{created_at}</Text>
             </Body>
           </Left>

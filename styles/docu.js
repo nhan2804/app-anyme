@@ -1,11 +1,10 @@
 import { StyleSheet } from "react-native";
-import { color } from "react-native-reanimated";
 const styles = StyleSheet.create({
   container: {
     width: "100%",
     height: "100%",
-    paddingHorizontal: 10,
-    paddingVertical: 10,
+    // paddingHorizontal: 10,
+    // paddingVertical: 10,
   },
   active: {
     backgroundColor: "#1ABDEE",
@@ -59,8 +58,8 @@ const styles = StyleSheet.create({
   },
   botItem: {
     width: "100%",
-    height: 220,
-    backgroundColor: "white",
+    height: 120,
+    backgroundColor: "#ccc",
     borderRadius: 10,
     marginBottom: 10,
     paddingHorizontal: 10,
@@ -86,9 +85,8 @@ const styles = StyleSheet.create({
   title: {
     width: "83%",
     fontSize: 20,
-    fontWeight: "600",
+    fontWeight: "bold",
     textAlign: "left",
-    backgroundColor: "#FFC300",
 
     borderRadius: 5,
     // borderColor: "#000",

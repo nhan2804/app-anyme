@@ -4,15 +4,15 @@ import { StyleSheet } from "react-native";
 import { Input, Button } from "react-native-elements";
 import useLogin from "../../common/hooks/useLogin";
 import { useForm, Controller } from "react-hook-form";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import useNewPost from "../../common/hooks/useNewPost";
+import { Header } from "react-native-elements";
 const NewPost = ({ isOpen, navigation }) => {
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { mutate: newP } = useNewPost();
+  const { mutate: newP, isLoading } = useNewPost();
   function onView(id) {
     navigation.navigate("ViewPost", { id });
   }
@@ -26,44 +26,52 @@ const NewPost = ({ isOpen, navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.viewStyles}>
-        <Controller
-          control={control}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <Input
-              placeholder="Title"
-              style={styles.white}
-              onChangeText={(value) => onChange(value)}
-              value={value}
-            />
-          )}
-          name="title"
-          rules={{ required: true }}
-          defaultValue=""
-        />
+    <View>
+      <Header
+        leftComponent={{ icon: "home", color: "#fff" }}
+        centerComponent={{ text: "Chi tiết", style: { color: "#fff" } }}
+      />
 
-        <Controller
-          control={control}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <Input
-              placeholder="Nội dung"
-              style={styles.white}
-              onChangeText={(value) => onChange(value)}
-              value={value}
-            />
-          )}
-          name="content"
-          rules={{ required: true }}
-          defaultValue=""
-        />
+      <View style={styles.container}>
+        <View style={styles.viewStyles}>
+          <Controller
+            control={control}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <Input
+                placeholder="Title"
+                style={styles.white}
+                onChangeText={(value) => onChange(value)}
+                value={value}
+              />
+            )}
+            name="title"
+            rules={{ required: true }}
+            defaultValue=""
+          />
 
-        <View style={styles.center}>
-          <Button
-            title="Hỏi ngay!"
-            style={styles.color}
-            onPress={handleSubmit(newPost)}
-          ></Button>
+          <Controller
+            control={control}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <Input
+                placeholder="Nội dung"
+                style={styles.white}
+                onChangeText={(value) => onChange(value)}
+                value={value}
+              />
+            )}
+            name="content"
+            rules={{ required: true }}
+            defaultValue=""
+          />
+
+          <View style={styles.center}>
+            <Button
+              loading={isLoading}
+              title="Hỏi ngay!"
+              style={styles.color}
+              onPress={handleSubmit(newPost)}
+            ></Button>
+          </View>
         </View>
       </View>
     </View>
@@ -73,9 +81,11 @@ const NewPost = ({ isOpen, navigation }) => {
 const styles = StyleSheet.create({
   viewStyles: {
     // flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#fabc36",
+    // alignItems: "center",
+    // justifyContent: "center",
+    backgroundColor: "#e8e5de",
+    width: "100%",
+    height: "100%",
   },
   red: {
     color: "red",
