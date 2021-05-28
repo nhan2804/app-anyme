@@ -54,7 +54,7 @@ function ItemForum({ item, onView, isDetail }) {
       <CardItem>
         <Left>
           <Button transparent textStyle={{ color: "#87838B" }}>
-            <Icon size={18} color="red" name="heart-outline " />
+            <Icon size={18} color="red" name="heart-outline" />
             <Text>{item?.like_post} Yêu thích</Text>
           </Button>
         </Left>
