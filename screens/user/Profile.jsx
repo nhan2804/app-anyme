@@ -1,13 +1,18 @@
 import React, { useState } from "react";
-import { Animated, View, StyleSheet, Text, Image, ScrollView } from "react-native";
+import {
+  Animated,
+  View,
+  StyleSheet,
+  Text,
+  Image,
+  ScrollView,
+} from "react-native";
 import PropTypes from "prop-types";
-import Posts from "./Posts";
-import {Icon} from "react-native-elements";
+import { Icon } from "react-native-elements";
 import { TabView, TabBar } from "react-native-tab-view";
 
 function Profile(props) {
-
- const propTypes = {
+  const propTypes = {
     avatar: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     bio: PropTypes.string.isRequired,
@@ -31,22 +36,22 @@ function Profile(props) {
         }),
       })
     ).isRequired,
-  }
+  };
 
   const defaultProps = {
     containerStyle: {},
     tabContainerStyle: {},
-  }
+  };
 
   const [tabs, setValues] = useState({
     tabs: {
       index: 0,
       routes: [
-        { key: '1', title: 'My Courses', count: 2 },
-        { key: '2', title: 'My Post', count: 10 },
-        { key: '3', title: 'My Blog', count: 50 }
+        { key: "1", title: "My Courses", count: 2 },
+        { key: "2", title: "My Post", count: 10 },
+        { key: "3", title: "My Blog", count: 50 },
       ],
-    }
+    },
   });
 
   const onPressPlace = () => {
@@ -58,7 +63,7 @@ function Profile(props) {
       tabs: {
         ...tabs.tabs,
         index,
-      }
+      },
     });
   };
 
@@ -100,27 +105,42 @@ function Profile(props) {
     };
 
   const renderScene = ({ route: { key } }) => {
-    const { posts } = props;
-
     switch (key) {
       case "1":
-        return <Posts containerStyle={styles.sceneContainer} posts={posts} />;
+        return (
+          <View>
+            <Text>alo</Text>
+          </View>
+        );
       case "2":
-        return <Posts containerStyle={styles.sceneContainer} posts={posts} />;
+        return (
+          <View>
+            <Text>hhhh</Text>
+          </View>
+        );
       case "3":
-        return <Posts containerStyle={styles.sceneContainer} posts={posts} />;
+        return (
+          <View>
+            <Text>hhhh</Text>
+          </View>
+        );
       default:
-        return <View />;
+        return <Text>hello</Text>;
     }
   };
 
   const renderContactHeader = () => {
-    const { avatar, name, bio } = props;
+    const { name, bio } = props;
 
     return (
       <View style={styles.headerContainer}>
         <View style={styles.userRow}>
-          <Image style={styles.userImage} source={{ uri: 'https://i.pinimg.com/originals/0a/b0/84/0ab084c73cb730e4ac0eff47ad85c721.png' }} />
+          <Image
+            style={styles.userImage}
+            source={{
+              uri: "https://i.pinimg.com/originals/0a/b0/84/0ab084c73cb730e4ac0eff47ad85c721.png",
+            }}
+          />
           <View style={styles.userNameRow}>
             <Text style={styles.userNameText}>{name}</Text>
           </View>

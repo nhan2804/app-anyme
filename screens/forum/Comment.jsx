@@ -23,7 +23,7 @@ function Comment(props) {
           <Thumbnail source={{ uri: config.base + cmt?.avatar }} />
         </Left>
         <Body>
-          <View style={{ paddingLeft: 40 }}>
+          <View style={{ paddingLeft: 0 }}>
             <Text>{cmt?.displayname}</Text>
             <View style={{ flex: 1 }}>
               <Text>{cmt?.content_cmt}</Text>

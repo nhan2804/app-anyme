@@ -44,7 +44,7 @@ const DetailCourse = ({ route }) => {
       <View style={styles.center}>
         <View style={styles.inCenter}>
           <Text style={styles.title}>{data?.course_detail?.title_course}</Text>
-          <View style={styles.test}>
+          <View>
             <Text style={styles.date}>
               {data?.course_detail?.created_at.substring(0, 10)} .
               {data?.course_detail?.total_study} học viên
@@ -142,9 +142,7 @@ const DetailCourse = ({ route }) => {
             <Text style={styles.Txbtt}>Hỏi đáp</Text>
           </TouchableOpacity>
         </View>
-        {/* <ScrollView>
-          <Rating />
-        </ScrollView> */}
+
         {tab == 0 && (
           <View style={styles.inBot}>
             <ScrollView style={{ height: "100%" }}>
@@ -169,7 +167,7 @@ const DetailCourse = ({ route }) => {
             </ScrollView>
           </View>
         )}
-        {tab == 1 && <Rating id={id} />}
+        {tab == 1 && <Rating bought={data?.bought} id={id} />}
       </View>
     </View>
   );

@@ -1,14 +1,13 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { Text, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Forum from "./screens/forum/index";
-import Blog from "./screens/blog/index";
+
 import { MaterialCommunityIcons } from "react-native-vector-icons";
-import Icon from "react-native-vector-icons/FontAwesome";
+
 import User from "./screens/user/index";
 import RootCourse from "./screens/course/RootCourse";
 import Document from "./screens/document";
+import RootBlog from "./screens/blog/RootBlog";
 const Tab = createBottomTabNavigator();
 function TabNav(props) {
   return (
@@ -47,7 +46,7 @@ function TabNav(props) {
           },
         }}
         name="Blog"
-        component={Blog}
+        component={RootBlog}
       />
       <Tab.Screen
         options={{

@@ -3,14 +3,22 @@ import { Text, View } from "react-native";
 import { Rating as Rate, Avatar, Input, Button } from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import config from "../../../api/config";
+import useEditRate from "../../../common/hooks/useEditRate";
 import useNewRate from "../../../common/hooks/useNewRate";
 import styles from "../../../styles/rating";
-export default function NewRating({ rate, id }) {
-  const { mutate: onNew, isLoading } = useNewRate();
-  const [num_rate, setrate] = useState(5);
+export default function EditRating({ isEdit, rate, id }) {
+  const { mutate: onEdit, isLoading } = useEditRate();
+  const [num_rate, setrate] = useState(rate?.star_rate);
   const [text, setText] = useState(rate?.comment);
   const handleRate = () => {
-    onNew({ id, text, num_rate });
+    onEdit(
+      { id_ra: rate?.id, id, text, num_rate },
+      {
+        onSuccess: () => {
+          isEdit(false);
+        },
+      }
+    );
   };
 
   return (

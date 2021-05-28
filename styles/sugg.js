@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   title: {
-    height: "40%",
+    // height: "40%",
     fontSize: 15,
     fontWeight: "600",
     textAlign: "left",
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
   desc: {
     width: "100%",
-    height: "55%",
+    // height: "55%",
     borderRadius: 10,
     // backgroundColor:"#ddd",
     paddingVertical: 5,

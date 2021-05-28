@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   Vbtn: {
     marginTop: 10,
     width: "100%",
-    height: 120,
+    height: 100,
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
@@ -123,9 +123,10 @@ const styles = StyleSheet.create({
   },
   bot: {
     backgroundColor: "#000",
-    height: 520,
+    height: 540,
     paddingLeft: 10,
     paddingRight: 10,
+    paddingBottom: 80,
     // paddingVertical: 80,
   },
   btt: {

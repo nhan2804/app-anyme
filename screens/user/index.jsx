@@ -3,13 +3,16 @@ import { ScrollView } from "react-native";
 import React from "react";
 import Profile from "./Profile";
 import contactData from "../../mocks/contact.json";
-import PropTypes from "prop-types";
+import MyCourse from "./Course";
+import MyBlog from "./Blog";
 
 function index(props) {
   return (
     <View>
       <ScrollView>
-        <Profile {...contactData} />
+        {/* <Profile {...contactData} /> */}
+        <MyCourse />
+        <MyBlog />
       </ScrollView>
     </View>
   );

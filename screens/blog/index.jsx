@@ -5,16 +5,13 @@ import ItemBlog from "../../components/blog/ItemBlog";
 import { Container, Header, Left, Body, Right, Title } from "native-base";
 function Blog(props) {
   const data = useBlogs();
-
+  const onView = (id) => {
+    props.navigation.navigate("DetailBlog", {
+      id,
+    });
+  };
   return (
     <Container>
-      <Header>
-        <Left />
-        <Body>
-          <Title>Chia sẻ</Title>
-        </Body>
-        <Right />
-      </Header>
       <View>
         <ScrollView>
           {/* <FlatList
@@ -23,14 +20,14 @@ function Blog(props) {
           renderItem={ItemBlog}
         /> */}
           {data?.data?.data?.datas.map((e, i) => {
-            return <ItemBlog key={e.id_blog} item={e}></ItemBlog>;
+            return (
+              <ItemBlog onView={onView} key={e.id_blog} item={e}></ItemBlog>
+            );
           })}
         </ScrollView>
       </View>
     </Container>
   );
 }
-
-Blog.propTypes = {};
 
 export default Blog;

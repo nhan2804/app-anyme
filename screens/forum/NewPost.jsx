@@ -20,14 +20,13 @@ const NewPost = ({ isOpen, navigation }) => {
     console.log(data);
     newP(data, {
       onSuccess: (data) => {
-        console.log(data.data.id);
         onView(data.data.id);
       },
     });
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.viewStyles}>
         <Controller
           control={control}
@@ -95,6 +94,10 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 40,
     fontWeight: "bold",
+  },
+  container: {
+    paddingHorizontal: 10,
+    paddingVertical: 10,
   },
 });
 export default NewPost;

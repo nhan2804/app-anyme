@@ -16,7 +16,7 @@ function ViewPost({ route, navigation }) {
   return (
     <View style={{ flex: 1 }}>
       <ScrollView>
-        <ItemForum item={post?.datas} />
+        <ItemForum isDetail={true} item={post?.datas} />
         <View>
           <User post={post?.datas} cmt={info}></User>
         </View>

@@ -3,10 +3,11 @@ import { ScrollView, Text, View } from "react-native";
 import { Rating as Rate, LinearProgress, Avatar } from "react-native-elements";
 import useRate from "../../common/hooks/useRate";
 import styles from "../../styles/rating";
+import EditRating from "./rating/EditRating";
 import ItemRating from "./rating/ItemRating";
 import NewRating from "./rating/NewRating";
 
-const Rating = ({ id }) => {
+const Rating = ({ bought, id }) => {
   const { data } = useRate(id);
   console.log(data?.count);
   const [editRate, seteditRate] = useState(false);
@@ -74,10 +75,16 @@ const Rating = ({ id }) => {
           </View>
         </View>
       </View>
-      {!data?.rated && <NewRating rate={data?.rated} id={id} />}
-      {data?.rated && editRate && <NewRating rate={data?.rated} id={id} />}
+      {bought && !data?.rated && <NewRating rate={data?.rated} id={id} />}
+      {data?.rated && editRate && (
+        <EditRating isEdit={seteditRate} rate={data?.rated} id={id} />
+      )}
       {data?.rated && (
-        <ItemRating idUser={data?.rated?.user?.id} rate={data?.rated} />
+        <ItemRating
+          isEdit={seteditRate}
+          idUser={data?.rated?.user?.id}
+          rate={data?.rated}
+        />
       )}
       {data?.rates?.map((e, i) => {
         return <ItemRating rate={e} />;

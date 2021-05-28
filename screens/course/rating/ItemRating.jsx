@@ -3,7 +3,7 @@ import { Text, View } from "react-native";
 import { Rating as Rate, Avatar } from "react-native-elements";
 import config from "../../../api/config";
 import styles from "../../../styles/rating";
-export default function ItemRating({ rate, idUser }) {
+export default function ItemRating({ isEdit, rate, idUser }) {
   return (
     <View style={styles.itemCmt}>
       <View style={styles.av}>
@@ -16,7 +16,15 @@ export default function ItemRating({ rate, idUser }) {
         <Text style={styles.name}>
           {rate?.user?.displayname}{" "}
           {idUser ? (
-            <Text style={{ color: "#3678f3" }}>: Bạn, sửa đánh giá này?</Text>
+            <Text
+              onPress={() => {
+                isEdit(true);
+                console.log("ediit");
+              }}
+              style={{ color: "#3678f3" }}
+            >
+              : Bạn, sửa đánh giá này?
+            </Text>
           ) : (
             ""
           )}

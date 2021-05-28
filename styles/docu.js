@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   },
   title: {
     width: "83%",
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: "600",
     textAlign: "left",
     backgroundColor: "#FFC300",

@@ -2,15 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Image, View } from "react-native";
 import {
-  Container,
-  Header,
   Content,
   Card,
   CardItem,
   Thumbnail,
   Text,
-  Button,
-  Icon,
   Left,
   Body,
   Right,
@@ -18,16 +14,25 @@ import {
 import config from "../../api/config";
 
 function ItemBlog(props) {
-  const { name, title_blog, img_blog, created_at } = props.item;
-
+  const {
+    name,
+    title_blog,
+    img_blog,
+    created_at,
+    id_blog,
+    avatar,
+    displayname,
+  } = props.item;
+  console.log("item id" + id_blog);
+  console.log(title_blog);
   return (
     <Content>
       <Card style={{ padding: 1 }}>
         <CardItem>
           <Left>
-            <Thumbnail source={{ uri: `${config.resource}${img_blog}` }} />
+            <Thumbnail source={{ uri: `${config.base}${avatar}` }} />
             <Body>
-              <Text>{name}</Text>
+              <Text>{displayname}</Text>
               <Text note>{created_at}</Text>
             </Body>
           </Left>
@@ -43,7 +48,7 @@ function ItemBlog(props) {
           <Left></Left>
           <Body></Body>
           <Right>
-            <Text>{created_at}</Text>
+            <Text onPress={() => props.onView(id_blog)}>{created_at}</Text>
           </Right>
         </CardItem>
       </Card>

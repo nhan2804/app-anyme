@@ -49,9 +49,8 @@ export default function Login({ setauth }) {
   };
   return (
     <View style={styles.viewStyles}>
-      <Text style={styles.textStyles}>Yukino</Text>
-      <Text style={styles.textStyles}>Yukino</Text>
-      <Text style={styles.textStyles}>Yukino</Text>
+      <Text style={styles.textStyles}>Codehero</Text>
+
       <Controller
         control={control}
         render={({ field: { onChange, onBlur, value } }) => (
