@@ -14,9 +14,16 @@ import {
 import config from "../../api/config";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import WebView from "react-native-webview";
+import useLikeForum from "../../common/hooks/useLikeForum";
 function ItemForum({ item, onView, isDetail }) {
   const handleView = (id) => {
     onView(id);
+  };
+
+  const { mutate: onLike } = useLikeForum();
+  const handleLike = (id) => {
+    console.log("id" + id);
+    onLike(id);
   };
   return (
     <Card style={{ flex: 0 }}>
@@ -37,14 +44,16 @@ function ItemForum({ item, onView, isDetail }) {
       <CardItem>
         <Body>
           <Text>{item?.title_post}</Text>
-          {/* <Image
-            source={{
-              uri:
-                "https://c4.wallpaperflare.com/wallpaper/432/692/1019/anime-my-teen-romantic-comedy-snafu-yukino-yukinoshita-wallpaper-preview.jpg",
-            }}
-            style={{ height: 200, width: 200, flex: 1 }}
-          /> */}
+
           {isDetail && <Text>{item?.content_post}</Text>}
+          {item?.img && (
+            <Image
+              source={{
+                uri: item?.img,
+              }}
+              style={{ height: 200, width: "100%", flex: 1 }}
+            />
+          )}
           <WebView
             style={{ maxHeight: 200 }}
             source={{ html: item?.content_post }}
@@ -53,14 +62,26 @@ function ItemForum({ item, onView, isDetail }) {
       </CardItem>
       <CardItem>
         <Left>
-          <Button transparent textStyle={{ color: "#87838B" }}>
-            <Icon size={18} color="red" name="heart-outline" />
-            <Text>{item?.like_post} Yêu thích</Text>
-          </Button>
+          {item?.id_auth_cmt && (
+            <Button transparent textStyle={{ color: "#87838B" }}>
+              <Icon size={18} color="red" name="heart" />
+              <Text>{item?.like_post} Yêu thích ,Bạn</Text>
+            </Button>
+          )}
+          {!item?.id_auth_cmt && (
+            <Button
+              onPress={() => handleLike(item?.id_post)}
+              transparent
+              textStyle={{ color: "#87838B" }}
+            >
+              <Icon size={18} color="red" name="heart-outline" />
+              <Text>{item?.like_post} Yêu thích </Text>
+            </Button>
+          )}
         </Left>
         <Body>
           <Button
-            onPress={() => handleView(item.id_post)}
+            onPress={() => handleView(item?.id_post)}
             transparent
             textStyle={{ color: "#87838B" }}
           >

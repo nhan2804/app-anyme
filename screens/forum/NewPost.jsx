@@ -1,28 +1,77 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, ToastAndroid } from "react-native";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform, Image } from "react-native";
 import { Input, Button } from "react-native-elements";
 import useLogin from "../../common/hooks/useLogin";
 import { useForm, Controller } from "react-hook-form";
 import useNewPost from "../../common/hooks/useNewPost";
 import { Header } from "react-native-elements";
+import ImagePickerExample from "../../common/pickerImg/PickerImg";
+import * as ImagePicker from "expo-image-picker";
+import useUploadImg from "../../common/hooks/useUploadImg";
 const NewPost = ({ isOpen, navigation }) => {
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const [image, setImage] = useState(null);
+  const [url, seturl] = useState(null);
+  const [base64, setbase64] = useState(null);
+  // console.log(base64?.base64);
   const { mutate: newP, isLoading } = useNewPost();
+  const { mutate: newImg } = useUploadImg();
   function onView(id) {
     navigation.navigate("ViewPost", { id });
   }
   const newPost = (data) => {
-    console.log(data);
-    newP(data, {
-      onSuccess: (data) => {
-        onView(data.data.id);
+    console.log("vo");
+    // console.log(image.base64);
+
+    newP(
+      { ...data, url },
+      {
+        onSuccess: (data) => {
+          onView(data.data.id);
+        },
+      }
+    );
+  };
+
+  useEffect(() => {
+    (async () => {
+      if (Platform.OS !== "android") {
+        const { status } =
+          await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== "granted") {
+          alert("Sorry, we need camera roll permissions to make this work!");
+        }
+      }
+    })();
+  }, []);
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [16, 9],
+      quality: 1,
+      base64: true,
+    });
+
+    // console.log(result);
+    newImg(result?.base64, {
+      onSuccess: (img) => {
+        seturl(img);
+      },
+      onError: (e) => {
+        console.log({ e });
       },
     });
+    // setbase64(result);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
   };
 
   return (
@@ -71,6 +120,17 @@ const NewPost = ({ isOpen, navigation }) => {
               style={styles.color}
               onPress={handleSubmit(newPost)}
             ></Button>
+
+            <Button
+              title="Pick an image from camera roll"
+              onPress={pickImage}
+            />
+            {image && (
+              <Image
+                source={{ uri: image }}
+                style={{ width: 200, height: 200 }}
+              />
+            )}
           </View>
         </View>
       </View>
@@ -80,9 +140,6 @@ const NewPost = ({ isOpen, navigation }) => {
 
 const styles = StyleSheet.create({
   viewStyles: {
-    // flex: 1,
-    // alignItems: "center",
-    // justifyContent: "center",
     backgroundColor: "#e8e5de",
     width: "100%",
     height: "100%",

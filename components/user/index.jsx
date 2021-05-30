@@ -17,19 +17,25 @@ import config from "../../api/config";
 import { TextInput } from "react-native";
 import useComment from "../../common/hooks/useComment";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import useImagePicker from "../../common/hooks/useImgPicker";
+import { Image } from "react-native";
 export default function User({ cmt, post }) {
   const [text, settext] = useState("");
   const { mutate: newCmt, isLoading } = useComment();
+  const [image, setimage, base, onPicker, url] = useImagePicker();
+
   const handleCmt = () => {
     newCmt(
-      { content: text, id_post: post?.id_post, id_rec: post?.auth_post },
+      { content: text, id_post: post?.id_post, id_rec: post?.auth_post, url },
       {
         onSuccess: (data) => {
           settext("");
+          setimage(null);
         },
       }
     );
   };
+
   return (
     <List>
       <ListItem avatar>
@@ -53,7 +59,16 @@ export default function User({ cmt, post }) {
         </View>
         {/* </Body> */}
       </ListItem>
-      <View style={styles.right}>
+
+      <View
+        style={[styles.right, { alignItems: "center", marginHorizontal: 4 }]}
+      >
+        <Button
+          icon={<Icon name="camera" size={20} color="white" />}
+          iconRight
+          title="Ảnh"
+          onPress={onPicker}
+        ></Button>
         <Button
           loading={isLoading}
           icon={<Icon name="send" size={20} color="white" />}
@@ -63,6 +78,16 @@ export default function User({ cmt, post }) {
         >
           <Text></Text>
         </Button>
+      </View>
+      <View style={styles.right}>
+        {image && (
+          <Image
+            style={{ width: 40, height: 40 }}
+            source={{
+              uri: image,
+            }}
+          ></Image>
+        )}
       </View>
     </List>
   );

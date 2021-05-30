@@ -4,11 +4,10 @@ const styles = StyleSheet.create({
   flex: {},
   container: {
     width: "100%",
-    height: "100%",
+
     // paddingVertical: 10,
     // marginBottom: 20,
     // paddingHorizontal: 10,
-    display: "flex",
   },
   headD: {
     width: "100%",

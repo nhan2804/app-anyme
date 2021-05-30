@@ -21,15 +21,19 @@ function ViewPost({ route, navigation }) {
           leftComponent={{ icon: "home", color: "#fff" }}
           centerComponent={{ text: "Chi tiết", style: { color: "#fff" } }}
         />
+
         <ItemForum isDetail={true} item={post?.datas} />
         <View>
           <User post={post?.datas} cmt={info}></User>
         </View>
-        <View>
-          {post?.allcmt?.data?.map((e, i) => {
-            return <Comment key={e.id_cmt} item={e} />;
-          })}
-        </View>
+
+        <ScrollView>
+          <View>
+            {post?.allcmt?.data?.map((e, i) => {
+              return <Comment key={e.id_cmt} item={e} />;
+            })}
+          </View>
+        </ScrollView>
       </ScrollView>
     </View>
   );

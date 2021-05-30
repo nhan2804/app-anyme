@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
   },
   bot: {
     backgroundColor: "#000",
-    height: 540,
+    // height: 540,
     paddingLeft: 10,
     paddingRight: 10,
     paddingBottom: 80,

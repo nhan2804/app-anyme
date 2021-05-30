@@ -5,7 +5,7 @@ import { StyleSheet } from "react-native";
 export default function Splash() {
   return (
     <View style={styles.viewStyles}>
-      <Text style={styles.textStyles}>Yukino</Text>
+      <Text style={styles.textStyles}>Codehero</Text>
     </View>
   );
 }

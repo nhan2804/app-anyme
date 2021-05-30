@@ -12,7 +12,7 @@ const Rating = ({ bought, id }) => {
   console.log(data?.count);
   const [editRate, seteditRate] = useState(false);
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.headD}>
         <View style={styles.hL}>
           <Text style={styles.value}>{data?.avg}</Text>
@@ -89,7 +89,7 @@ const Rating = ({ bought, id }) => {
       {data?.rates?.map((e, i) => {
         return <ItemRating rate={e} />;
       })}
-    </ScrollView>
+    </View>
   );
 };
 

@@ -14,6 +14,7 @@ import {
 } from "native-base";
 import config from "../../api/config";
 import { WebView } from "react-native-webview";
+import { Image } from "react-native";
 function Comment(props) {
   const cmt = props.item;
   return (
@@ -27,6 +28,12 @@ function Comment(props) {
             <Text>{cmt?.displayname}</Text>
             <View style={{ flex: 1 }}>
               <Text>{cmt?.content_cmt}</Text>
+              {cmt?.img && (
+                <Image
+                  style={{ width: "100%", minHeight: 200 }}
+                  source={{ uri: cmt?.img }}
+                ></Image>
+              )}
             </View>
           </View>
         </Body>
@@ -38,7 +45,7 @@ function Comment(props) {
           />
         </View>
         <Right>
-          <Text note>3:43 pm</Text>
+          <Text note>{cmt?.created_at.substring(10, 16)}</Text>
         </Right>
       </ListItem>
     </List>

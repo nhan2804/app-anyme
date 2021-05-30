@@ -24,7 +24,7 @@ function ListPosts({ navigation }) {
       ></Button> */}
 
       <ScrollView>
-        {post?.data?.data?.data?.data.map((e, i) => {
+        {post?.data?.data.map((e, i) => {
           return <ItemForum onView={onView} item={e} key={e.id_post} />;
         })}
       </ScrollView>

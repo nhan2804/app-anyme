@@ -49,7 +49,7 @@ export default function Login({ setauth }) {
   };
   return (
     <View style={styles.viewStyles}>
-      <Text style={styles.textStyles}>Codehero</Text>
+      <Text style={styles.textStyles}>RinNovel</Text>
 
       <Controller
         control={control}
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#fabc36",
+    backgroundColor: "#f02193",
   },
   red: {
     color: "red",
