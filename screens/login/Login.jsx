@@ -44,12 +44,10 @@ export default function Login({ setauth }) {
         ToastAndroid.show(e.response.data.message, ToastAndroid.SHORT);
       },
     });
-    console.log(error);
-    console.log(data);
   };
   return (
     <View style={styles.viewStyles}>
-      <Text style={styles.textStyles}>RinNovel</Text>
+      <Text style={styles.textStyles}>Codehero</Text>
 
       <Controller
         control={control}
@@ -98,7 +96,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#f02193",
+    backgroundColor: "orange",
   },
   red: {
     color: "red",

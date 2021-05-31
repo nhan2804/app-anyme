@@ -58,8 +58,8 @@ const styles = StyleSheet.create({
   },
   botItem: {
     width: "100%",
-    height: 120,
-    backgroundColor: "#ccc",
+    height: 160,
+    backgroundColor: "#fff",
     borderRadius: 10,
     marginBottom: 10,
     paddingHorizontal: 10,
@@ -70,13 +70,13 @@ const styles = StyleSheet.create({
   },
   bHead: {
     width: "100%",
-    height: 65,
+    // height: 80,
     borderRadius: 20,
 
     // backgroundColor:"#ddd",
     marginBottom: 10,
     flexDirection: "row",
-    justifyContent: "space-between",
+    // justifyContent: "space-between",
   },
   imgV: {
     width: "15%",
@@ -96,9 +96,9 @@ const styles = StyleSheet.create({
   },
   desc: {
     width: "100%",
-    height: 80,
+    // height: 200,
     // backgroundColor:"#ddd",
-    marginBottom: 10,
+    // marginBottom: 10,
   },
   Txdes: {
     fontSize: 17,

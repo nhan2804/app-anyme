@@ -43,29 +43,29 @@ const Document = () => {
           <View key={e.id_doc} style={styles.botItem}>
             <View style={styles.bHead}>
               <View style={styles.imgV}>
-                <Text style={{ fontSize: 26, color: "#6fa7e8" }}>
-                  File . {e.file_doc.split(".").slice(-1)[0]}
-                </Text>
+                <View style={{ backgroundColor: "#dadada" }}>
+                  <Text
+                    style={{
+                      fontSize: 26,
+                      color: "#6fa7e8",
+                    }}
+                  >
+                    {e.file_doc.split(".").slice(-1)[0]}
+                  </Text>
+                </View>
               </View>
+
               <View>
                 <Text style={styles.title}>{e.name_doc}</Text>
-                <Text>{e.created_at}</Text>
+                <Text>{e.created_at.substring(0, 10)}</Text>
               </View>
-              <View>
+              <View style={{ position: "absolute", top: 0, right: 10 }}>
                 <Icon name="dots-vertical" size={30}></Icon>
               </View>
             </View>
             <View style={styles.desc}>
-              <Text style={styles.Txdes}>{e.desc_doc.substring(0, 10)}</Text>
+              <Text style={styles.Txdes}>{e.desc_doc.substring(0, 50)}</Text>
             </View>
-            {/* <View style={styles.botb}>
-              <TouchableOpacity style={styles.btnL}>
-                <Text style={styles.Txbtn}>Xem chi tiết</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.btnR}>
-                <Text style={styles.Txbtn}>Tải xuống</Text>
-              </TouchableOpacity>
-            </View> */}
           </View>
         );
       })}

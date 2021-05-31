@@ -88,7 +88,6 @@ const NewPost = ({ isOpen, navigation }) => {
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 placeholder="Title"
-                style={styles.white}
                 onChangeText={(value) => onChange(value)}
                 value={value}
               />
@@ -103,7 +102,6 @@ const NewPost = ({ isOpen, navigation }) => {
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 placeholder="Nội dung"
-                style={styles.white}
                 onChangeText={(value) => onChange(value)}
                 value={value}
               />
@@ -115,23 +113,24 @@ const NewPost = ({ isOpen, navigation }) => {
 
           <View style={styles.center}>
             <Button
+              containerStyle={{
+                marginBottom: 20,
+              }}
               loading={isLoading}
               title="Hỏi ngay!"
-              style={styles.color}
+              style={{}}
               onPress={handleSubmit(newPost)}
             ></Button>
 
-            <Button
-              title="Pick an image from camera roll"
-              onPress={pickImage}
-            />
-            {image && (
-              <Image
-                source={{ uri: image }}
-                style={{ width: 200, height: 200 }}
-              />
-            )}
+            <Button title="Chọn ảnh" onPress={pickImage} />
           </View>
+          <View style={{ marginTop: 20 }}></View>
+          {image && (
+            <Image
+              source={{ uri: image }}
+              style={{ width: "100%", height: 200 }}
+            />
+          )}
         </View>
       </View>
     </View>
@@ -140,7 +139,7 @@ const NewPost = ({ isOpen, navigation }) => {
 
 const styles = StyleSheet.create({
   viewStyles: {
-    backgroundColor: "#e8e5de",
+    backgroundColor: "#e6e2e2",
     width: "100%",
     height: "100%",
   },
@@ -152,6 +151,7 @@ const styles = StyleSheet.create({
   },
   center: {
     textAlign: "center",
+    paddingHorizontal: 120,
   },
   color: {
     backgroundColor: "#000000",

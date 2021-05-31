@@ -11,7 +11,7 @@ export default function useLikeForum() {
     {
       onSuccess: (d) => {
         // const id = d.data;
-        queryClient.invalidateQueries("forum");
+        queryClient.invalidateQueries("forums");
       },
       onError: (e) => {
         console.log("loi");
